@@ -1,0 +1,435 @@
+import java.util.Scanner;
+class main{
+    String name;
+    String id;
+    String number,state;
+    int Currentmonth = 2;
+    String city;
+    int extraweight;
+    String Date;
+    String Time;
+    String From = "AHMEDABAD";
+    double price ;
+	String captcha = "1Ab21";
+    public static void main(String args[]){
+        Scanner sc = new Scanner (System.in);
+		System.out.println("........//WELCOME AIRLINE TICKET BOOKING//.........");
+        System.out.print("how many seats you want to reserved :-");
+        int person  = sc.nextInt();
+        airlinebooking [] a = new airlinebooking[person];
+		for(int i = 0;i<person;i++){
+          a[i] = new airlinebooking();
+        }
+		for(int i =0;i<person;i++){
+			if(i ==0){
+			a[i].getdata();
+			a[i].flightsavailable();}
+			else{
+				a[i].number= a[0].number;
+				a[i].state = a[0].state;
+				a[i].city = a[0].city;
+				a[i].Date = a[0].Date;
+				a[i].Time = a[0].Time;
+				a[i].price = a[0].price;
+				a[i].From = a[0].From;
+			}
+		}
+	
+		
+        
+		for(int i = 0;i<person;i++){
+         a[i].luggage();
+        }
+		
+		for(int i =0;i<person;i++){
+			a[i].display();
+		}
+}
+}
+class airlinebooking extends main{
+    Scanner sc = new Scanner(System.in);
+   ///// 
+   airlinebooking(int n){}
+    airlinebooking(){
+       System.out.print("enter your name :- ");
+       name = sc.nextLine();
+       System.out.print("enter your passport id :- ");
+       id = sc.nextLine();
+      
+       
+    }
+    void luggage(){
+        System.out.println("weight limit :-15kg");
+        System.out.println("600/kg for extra buggage\nENTER EXTRA BUGGAGE :- ");
+        extraweight= sc.nextInt();
+        price += (extraweight*600);
+    }
+	///////
+    void getdata(){
+        System.out.print("Enter Mobile Number :- ");
+		number = sc.nextLine();
+        this.checknumber();
+        
+        
+	}
+    
+//////
+    void checknumber(){
+        if(number.length()==10){
+            System.out.println("captcha = 1Ab21");
+            this.checkcap();
+        }
+        else{
+            getdata();    //recursion 
+        }
+    }
+	/////
+	void checkcap(){
+		System.out.print("Enter Captcha :- ");
+        String cap = sc.next();
+        if(cap.equals(captcha)){
+                System.out.println("......Login SuccessFully....");
+				System.out.println();
+				System.out.println("Enter Your Deestination :-");
+				sc.nextLine();
+				From = sc.nextLine();
+        }
+        else{
+            checkcap();
+        }
+    }
+    void punjab(int n){
+		if(n<=3 && n>=1){
+        boolean bb = true;
+        price = 2500;
+          System.out.println("              Available Dates:- \nPress 1 For Date:-  3-1-2024 Time:-Start 10 a.m  \nPress 2 For Date:-  13-2-2024 Time:-Start 5 p.m \nPress 3 For Date:-  5-3-2024 Time:-Start 12 a.m \nPress 4 For Date:-  5-4-2024 Time:-Start 4.30 p.m");		
+           int dt = sc.nextInt();
+           if(dt == 1){
+            Date =" 3-1-2024";
+            Time = "10 a.m";
+           } 
+             else if(dt==2){ //10 percent discount
+                price-=(price*(10/100));
+                Date =" 13-2-2024";
+                 Time = "5 p.m"; 
+
+            }
+                
+             else if(dt ==3){
+                 price-=(price*(15/100)); //15 percent discount
+                 Date =" 5-3-2024";
+                 Time = "10 a.m";
+             }
+                 else if(dt ==4){//20 percent discount
+                     price-=(price*(20/100));
+                     Date =" 5-4-2024";
+                     Time = "10 a.m";
+                 } 
+        while(bb){
+            switch(n){
+                case 1:
+                city = "AMRITSAR";
+                bb = false;
+                break; 
+                case 2:
+                city = "CHANDIGARH";
+                bb = false;
+                break;   
+                case 3:
+                city = "PATIALA";
+                bb = false;
+                break;
+                default : System.out.println("Invalid Input"); 
+						
+            }
+        }
+		
+		}
+		else{
+			System.out.println("Invalid Input"); 
+						System.out.println("press 1 for AMRITSAR");
+                        System.out.println("press 2 for CHANDIGARH");
+                        System.out.println("press 3 for PATIALA");
+						n = sc.nextInt();
+						punjab(n);
+		}
+    }
+    
+    void rajasthan(int n){
+		if(n>=1&&n<=2){
+        boolean bb = true;
+        price = 2000;
+          System.out.println("              Available Dates:- \nPress 1 For Date:-  3-1-2024 Time:-Start 10 a.m  \nPress 2 For Date:-  13-2-2024 Time:-Start 5 p.m \nPress 3 For Date:-  5-3-2024 Time:-Start 12 a.m \nPress 4 For Date:-  5-4-2024 Time:-Start 4.30 p.m");		
+           int dt = sc.nextInt();
+           if(dt == 1){
+            Date =" 3-1-2024";
+            Time = "10 a.m";
+           } 
+             else if(dt==2){ //10 percent discount
+                price-=(price*(10/100));
+                Date =" 13-2-2024";
+                 Time = "5 p.m"; 
+
+            }
+                
+             else if(dt ==3){
+                 price-=(price*(15/100)); //15 percent discount
+                 Date =" 5-3-2024";
+                 Time = "10 a.m";
+             }
+                 else if(dt ==4){//20 percent discount
+                     price-=(price*(20/100));
+                     Date =" 5-4-2024";
+                     Time = "10 a.m";
+                 } 
+        while(bb){
+            switch(n){
+                case 1:
+                city = "JODHPUR";
+                bb = false;
+                break; 
+                case 2:
+                city = "JAIPUR";
+                bb = false;
+                break;   
+                default : System.out.println("Invalid Input"); 
+				 
+            }
+        }
+		
+		}
+		else{
+			 System.out.println("Invalid Input"); 
+				 System.out.println("press 1 for JODHPUR ");
+                 System.out.println("press 2 for JAIPUR");
+				n = sc.nextInt();
+				rajasthan(n);
+		}
+    }
+    void uttarakhand(int n){
+		if(n>=1&&n<=2){
+        boolean bb = true;
+        price = 4000;
+          System.out.println("              Available Dates:- \nPress 1 For Date:-  3-1-2024 Time:-Start 10 a.m  \nPress 2 For Date:-  13-2-2024 Time:-Start 5 p.m \nPress 3 For Date:-  5-3-2024 Time:-Start 12 a.m \nPress 4 For Date:-  5-4-2024 Time:-Start 4.30 p.m");		
+           int dt = sc.nextInt();
+           if(dt == 1){
+            Date =" 3-1-2024";
+            Time = "10 a.m";
+           } 
+             else if(dt==2){ //10 percent discount
+                price-=(price*(10/100));
+                Date =" 13-2-2024";
+                 Time = "5 p.m"; 
+
+            }
+                
+             else if(dt ==3){
+                 price-=(price*(15/100)); //15 percent discount
+                 Date =" 5-3-2024";
+                 Time = "10 a.m";
+             }
+                 else if(dt ==4){//20 percent discount
+                     price-=(price*(20/100));
+                     Date =" 5-4-2024";
+                     Time = "10 a.m";
+                 } 
+        while(bb){
+            switch(n){
+                case 1:
+                city = "PATNAGAR";
+                bb = false;
+                break; 
+                case 2:
+                city = "UTTARKASHI";
+                bb = false;
+                break;   
+                default : System.out.println("Invalid Input"); 
+				 
+            }
+        }
+					
+		}
+		else{
+			 System.out.println("Invalid Input"); 
+				 System.out.println("press 1 for PATNAGAR");
+                 System.out.println("press 2 for UTTARKASHI");
+				n = sc.nextInt();
+				uttarakhand(n);
+			
+		}
+	}
+    void odisha(int n){
+		if(n>=1&&n<=2){
+        boolean bb = true;
+        price = 3000;
+          System.out.println("              Available Dates:- \nPress 1 For Date:-  3-1-2024 Time:-Start 10 a.m  \nPress 2 For Date:-  13-2-2024 Time:-Start 5 p.m \nPress 3 For Date:-  5-3-2024 Time:-Start 12 a.m \nPress 4 For Date:-  5-4-2024 Time:-Start 4.30 p.m");		
+           int dt = sc.nextInt();
+           if(dt == 1){
+            Date =" 3-1-2024";
+            Time = "10 a.m";
+           } 
+             else if(dt==2){ //10 percent discount
+                price-=(price*(10/100));
+                Date =" 13-2-2024";
+                 Time = "5 p.m"; 
+
+            }
+                
+             else if(dt ==3){
+                 price-=(price*(15/100)); //15 percent discount
+                 Date =" 5-3-2024";
+                 Time = "10 a.m";
+             }
+                 else if(dt ==4){//20 percent discount
+                     price-=(price*(20/100));
+                     Date =" 5-4-2024";
+                     Time = "10 a.m";
+                 } 
+        while(bb){
+            switch(n){
+                case 1:
+                city = "BHUBANESWAR";
+                bb = false;
+                break; 
+                case 2:
+                city = "BARBIL";
+                bb = false;
+                break;   
+                default : System.out.println("Invalid Input"); 
+				 
+			 
+            }
+        }
+		
+		}
+		else{
+			System.out.println("Invalid Input"); 
+				 System.out.println("press 1 for barbil ");
+                 System.out.println("press 2 for bhubaneswar");
+				n = sc.nextInt();
+				odisha(n);
+		}
+
+    }
+    void goa(int n){
+		if(n==1){
+        boolean bb = true;
+        price = 2500;
+          System.out.println("              Available Dates:- \nPress 1 For Date:-  3-1-2024 Time:-Start 10 a.m  \nPress 2 For Date:-  13-2-2024 Time:-Start 5 p.m \nPress 3 For Date:-  5-3-2024 Time:-Start 12 a.m \nPress 4 For Date:-  5-4-2024 Time:-Start 4.30 p.m");		
+           int dt = sc.nextInt();
+           if(dt == 1){
+            Date =" 3-1-2024";
+            Time = "10 a.m";
+           } 
+             else if(dt==2){ //10 percent discount
+                price-=(price*(10/100));
+                Date =" 13-2-2024";
+                 Time = "5 p.m"; 
+
+            }
+                
+             else if(dt ==3){
+                 price-=(price*(15/100)); //15 percent discount
+                 Date =" 5-3-2024";
+                 Time = "10 a.m";
+             }
+              else if(dt ==4){//20 percent discount
+                     price-=(price*(20/100));
+                     Date =" 5-4-2024";
+                     Time = "10 a.m";
+                 } 
+        while(bb){
+            switch(n){
+                case 1:
+                city = "DABOLIM";
+                bb = false;
+                break; 
+                  
+                default : System.out.println("Invalid Input");
+					
+            }
+        }
+		
+		}
+		else{
+			System.out.println("Invalid Input");
+					System.out.println("press 1 for DABOLIM ");
+					n = sc.nextInt();
+					goa(n);
+		}
+
+    }
+     void flightsavailable(){
+        System.out.println(".........//Available Flights//.........");
+		System.out.println("Press 1 For punjab\nPress 2 For odisha\nPress 3 For rajasthan\nPress 4 For goa\nPress 5 for uttarakhand");
+         int n = sc.nextInt();
+         int cityn;
+        if(n>=1 && n<=4) {
+            System.out.println(".......//cities where we are available//........");
+            boolean bb = true;
+           while(bb){
+              switch(n){
+                case 1:
+                        System.out.println("press 1 for AMRITSAR");
+                        System.out.println("press 2 for CHANDIGARH");
+                        System.out.println("press 3 for PATIALA");
+                        cityn = sc.nextInt();
+                        punjab(cityn); 
+						bb = false;
+                break;
+                case 2:
+                        System.out.println("press 1 for barbil ");
+                        System.out.println("press 2 for bhubaneswar");
+                        
+                        cityn = sc.nextInt();
+                        odisha(cityn); 
+						bb = false;
+                 break;
+                 case 3:
+                        System.out.println("press 1 for JODHPUR ");
+                        System.out.println("press 2 for JAIPUR");
+                        
+                        cityn = sc.nextInt();
+                        rajasthan(cityn); 
+						bb = false;
+                 break;
+                 case 4:
+                        System.out.println("press 1 for DABOLIM ");
+                        cityn = sc.nextInt();
+                        goa(cityn); 
+						bb = false;
+                 break;
+                 case 5:
+                    System.out.println("press 1 for PATNAGAR");
+                    System.out.println("press 2 for UTTARKASHI");
+                    cityn = sc.nextInt();
+                    uttarakhand(cityn);
+					bb = false;					
+                break;
+				default :System.out.println("Invalid Input");
+				
+            }
+          }
+        }
+        else{
+            System.out.println("enter valid number as per given ");
+            flightsavailable();
+        }
+     } 
+	 void display(){
+		 System.out.println("-------------------------------------");
+		 System.out.println("-------------------------------------");
+		 System.out.println("Name :- "+ name);
+		 System.out.println("Passport id :- "+ id);
+		 System.out.println("Date :-"+Date);
+		 System.out.println("Time :-"+Time);
+		 System.out.println("Weight :- "+ (15+extraweight));
+		 System.out.println("From :- "+ From);
+		 System.out.println("To :- "+ city);
+		 System.out.println("Price :- "+ price);
+		 System.out.println("-------------------------------------");
+		 System.out.println("-------------------------------------");
+  }
+	
+	
+}
